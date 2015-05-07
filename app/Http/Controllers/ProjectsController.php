@@ -6,15 +6,12 @@ use Illuminate\Redis\Database as PRedis;
 
 class ProjectsController extends Controller
 {
-    protected $path;
-
     protected $redis;
 
     private $projectHashKey = 'project';
 
-    public function __construct(Request $request, PRedis $redis)
+    public function __construct(PRedis $redis)
     {
-        $this->path = $request->path();
         $this->redis = $redis->connection();
     }
 
@@ -25,8 +22,6 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $path = $this->path;
-
         $projectKeys = $this->redis->keys($this->projectHashKey . ':*');
 
         foreach ($projectKeys as $projectKey) {
@@ -34,7 +29,7 @@ class ProjectsController extends Controller
             $projects[$key] = $this->redis->hgetall($projectKey);
         }
 
-        return view('projects/index', compact('path', 'projects'));
+        return view('projects/index', compact('projects'));
     }
 
     /**
@@ -44,9 +39,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        $path = $this->path;
-
-        return view('projects/create', compact('path'));
+        return view('projects/create');
     }
 
     /**
@@ -56,8 +49,6 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $this->path;
-
         $inputs = $request->except(['_token']);
 
         $projectName = $this->projectHashKey . ':' . rand();
@@ -77,13 +68,11 @@ class ProjectsController extends Controller
      */
     public function show($projectId)
     {
-        $path = $this->path;
-
         $project = $this->redis->hgetall($this->projectHashKey . ':' . $projectId);
 
         $project['id'] = $projectId;
 
-        return view('projects/show', compact('path', 'project'));
+        return view('projects/show', compact('project'));
     }
 
     /**
@@ -94,13 +83,11 @@ class ProjectsController extends Controller
      */
     public function edit($projectId)
     {
-        $path = $this->path;
-
         $project = $this->redis->hgetall($this->projectHashKey . ':' . $projectId);
 
         $project['id'] = $projectId;
 
-        return view('projects/edit', compact('path', 'project'));
+        return view('projects/edit', compact('project'));
     }
 
     /**
@@ -111,8 +98,6 @@ class ProjectsController extends Controller
      */
     public function update($projectId, Request $request)
     {
-        $path = $this->path;
-
         $inputs = $request->except(['_token', '_method']);
 
         $projectName = $this->projectHashKey . ':' . $projectId;
@@ -132,8 +117,6 @@ class ProjectsController extends Controller
      */
     public function destroy($projectId)
     {
-        $path = $this->path;
-
         $this->redis->del($this->projectHashKey . ':' . $projectId);
 
         return redirect('/projects');
@@ -141,8 +124,6 @@ class ProjectsController extends Controller
 
     public function doSearch($target = null)
     {
-        $path = $this->path;
-
         $projectKeys = $this->redis->keys($this->projectHashKey . ':*');
 
         foreach ($projectKeys as $projectKey) {
@@ -161,12 +142,11 @@ class ProjectsController extends Controller
             );
         }
 
-        return view('projects/search', compact('path', 'target', 'projects'));
+        return view('projects/search', compact('target', 'projects'));
     }
 
     public function search(Request $request)
     {
-        $path = $this->path;
         $target = $request->input('target');
 
         return redirect("/projects/search/$target");

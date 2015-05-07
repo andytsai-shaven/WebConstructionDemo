@@ -3,9 +3,7 @@
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', function () {
-        $path = Request::path();
-
-        return view('index', compact('path'));
+        return view('index');
     });
 
     // 專案管理
@@ -18,9 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // 內部作業
     Route::get('/internals', function () {
-        $path = Request::path();
-
-        return view('internals/index', compact('path'));
+        return view('internals/index');
     });
 
     // 成本估算
