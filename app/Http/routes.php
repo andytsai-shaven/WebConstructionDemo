@@ -15,23 +15,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/search', 'ProjectsController@search');
     });
     Route::resource('/projects', 'ProjectsController');
-    // Route::group(['prefix' => '/projects'], function () {
-    //     // 專案管理首頁
-    //     Route::get('/', 'ProjectsController@index');
-    //
-
-    //
-    //     // 專案新增
-    //     Route::get('/create', 'ProjectsController@create');
-    //     Route::post('/', 'ProjectsController@store');
-    //
-    //     // 專案編輯
-    //     Route::get('/edit/{projectId}', 'ProjectsController@edit');
-    //     // Route::put('/')
-    //
-    //     // 個別專案首頁
-    //     Route::get('/{projectId}', 'ProjectsController@show');
-    // });
 
     // 內部作業
     Route::get('/internals', function () {
