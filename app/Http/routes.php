@@ -27,11 +27,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // 工料分析
-    Route::get('/internals/quantity-analysis', function () {
-        $path = Request::path();
-
-        return $path;
+    Route::group(['prefix' => '/internals/quantity-analysis'], function () {
+        Route::post('/search', 'QuantityAnalysisController@search');
+        Route::get('/search/{target?}', 'QuantityAnalysisController@doSearch');
     });
+    Route::resource('/internals/quantity-analysis', 'QuantityAnalysisController');
 
     // 合約管理
     Route::get('/internals/contract-management', function () {

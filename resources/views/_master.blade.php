@@ -33,5 +33,7 @@
                 .addTo(new ScrollMagic.Controller());
             });
         </script>
+
+        @yield('scripts')
     </body>
 </html>
