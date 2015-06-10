@@ -18,7 +18,12 @@
                 <li @if (str_contains($path, 'internals')) class="active" @endif><a href="/internals">內部作業</a></li>
                 <li><a href="#">外部作業</a></li>
                 <li><a href="#">財務管理</a></li>
-                <li><a href="#">設定</a></li>
+                <li @if (str_contains($path, 'settings'))
+                        class="active"
+                    @endif
+                >
+                    <a href="/settings">設定</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/auth/logout">登出</a></li>

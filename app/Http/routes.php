@@ -40,6 +40,16 @@ Route::group(['middleware' => ['auth']], function () {
         return $path;
     });
 
+    Route::get('/settings', function () {
+        return view('settings/index');
+    });
+
+    Route::resource('/settings/works/types', 'SettingsWorksController@types');
+    Route::resource('/settings/works/orders', 'SettingsWorksController@orders');
+    Route::resource('/settings/works/units', 'SettingsWorksController@units');
+    Route::resource('/settings/works', 'SettingsWorksController');
+    Route::resource('/settings/self-check', 'SettingsSelfCheckController');
+    Route::resource('/self-check', 'SelfCheckController');
 });
 
 // 會員管理

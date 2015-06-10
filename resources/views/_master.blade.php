@@ -11,6 +11,10 @@
             body {
                 padding-top: 70px;
             }
+
+            textarea {
+                resize : none;
+            }
         </style>
     </head>
     <body class="container">
