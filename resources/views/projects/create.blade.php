@@ -2,65 +2,65 @@
 
 @section('projectsBreadcrumbs')
     <ol class="breadcrumb">
-        <li><a href="/projects">{{ trans('projects.project_management') }}</a></li>
-        <li class="active">{{ trans('projects.project_create') }}</li>
+        <li><a href="/projects">專案管理</a></li>
+        <li class="active">專案新增</li>
     </ol>
 @stop
 
 @section('projectsBody')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ trans('projects.project_create') }} - {{ trans('projects.basic_infos') }}</h3>
+            <h3 class="panel-title">專案新增 - 基本資料</h3>
         </div>
         <div class="panel-body">
             <form method="post" action="/projects">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">{{ trans('projects.project_name') }}</label>
+                    <label for="exampleInputEmail1">專案名稱</label>
                     <input type="text" name="project_name" class="form-control" id="exampleInputEmail1">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail2">{{ trans('projects.boss_name') }}</label>
+                    <label for="exampleInputEmail2">業主名稱</label>
                     <input type="text" name="boss_name" class="form-control" id="exampleInputEmail2">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail3">{{ trans('projects.supervisor') }}</label>
+                    <label for="exampleInputEmail3">監造單位</label>
                     <input type="text" name="supervisor" class="form-control" id="exampleInputEmail3">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail4">{{ trans('projects.construction_company') }}</label>
+                    <label for="exampleInputEmail4">營造廠</label>
                     <input type="text" name="construction_company" class="form-control" id="exampleInputEmail4">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail5">{{ trans('projects.site_director') }}</label>
+                    <label for="exampleInputEmail5">工地主任</label>
                     <input type="text" name="site_director" class="form-control" id="exampleInputEmail5">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail5">{{ trans('projects.quality_control_personnel') }}</label>
+                    <label for="exampleInputEmail5">品管人員</label>
                     <input type="text" name="quality_control_personnel" class="form-control" id="exampleInputEmail5">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail6">{{ trans('projects.safety_personnel') }}</label>
+                    <label for="exampleInputEmail6">安衛人員</label>
                     <input type="text" name="safety_personnel" class="form-control" id="exampleInputEmail6">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail7">{{ trans('projects.beginning_date') }}</label>
+                    <label for="exampleInputEmail7">開始日期</label>
                     <input type="date" name="beginning_date" class="form-control" id="exampleInputEmail7">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail8">{{ trans('projects.ending_date') }}</label>
+                    <label for="exampleInputEmail8">完成日期</label>
                     <input type="date" name="ending_date" class="form-control" id="exampleInputEmail8">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail9">{{ trans('projects.construction_costs') }}</label>
+                    <label for="exampleInputEmail9">工程總價</label>
                     <input type="text" name="construction_costs" class="form-control" id="exampleInputEmail9">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail10">{{ trans('projects.precautions') }}</label>
+                    <label for="exampleInputEmail10">注意事項</label>
                     <input type="text" name="precautions" class="form-control" id="exampleInputEmail10">
                 </div>
-                <a class="btn btn-default" href="{{ redirect()->getUrlGenerator()->previous() }}" role="button">{{ trans('projects.cancel') }}</a>
-                <button type="submit" class="btn btn-primary">{{ trans('projects.submit') }}</button>
+                <a class="btn btn-default" href="{{ redirect()->getUrlGenerator()->previous() }}" role="button">取消</a>
+                <button type="submit" class="btn btn-primary">確認</button>
             </form>
         </div>
     </div>

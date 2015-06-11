@@ -3,13 +3,13 @@
 @section('subNavigations')
     <ul id="sub-navigations" class="nav nav-pills nav-stacked">
         <li @if (str_contains($path, 'internals/quantity-analysis/create')) class="active" @endif>
-            <a href="/internals/cost-estimate">{{ trans('subNavigations.cost_estimate') }}</a>
+            <a href="/internals/cost-estimate">成本估算</a>
         </li>
         <li @if (str_contains($path, 'internals/quantity-analysis')) class="active" @endif>
-            <a href="/internals/quantity-analysis">{{ trans('subNavigations.quantity_analysis') }}</a>
+            <a href="/internals/quantity-analysis">工料分析</a>
         </li>
         <li @if (str_contains($path, 'internals/contract-management')) class="active" @endif>
-            <a href="/internals/contract-management">{{ trans('subNavigations.contract_management') }}</a>
+            <a href="/internals/contract-management">合約管理</a>
         </li>
     </ul>
 @stop
