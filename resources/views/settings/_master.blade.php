@@ -13,8 +13,12 @@
                 <li>
                     <a href="#">權限管理</a>
                 </li>
-                <li>
-                    <a href="#">協力廠商管理</a>
+                <li
+                    @if (str_contains($path, 'settings/subcontractors'))
+                        class="active"
+                    @endif
+                >
+                    <a href="/settings/subcontractors">協力廠商管理</a>
                 </li>
                 <li
                     @if (str_contains($path, 'settings/works'))
