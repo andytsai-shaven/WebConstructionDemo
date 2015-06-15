@@ -2,24 +2,24 @@
 
 @section('projectsBreadcrumbs')
     <ol class="breadcrumb">
-        <li><a href="/projects">{{ trans('projects.project_management') }}</a></li>
-        <li class="active">{{ trans('projects.project_search') }}</li>
+        <li><a href="/projects">專案管理</a></li>
+        <li class="active">專案搜尋</li>
     </ol>
 @stop
 
 @section('projectsBody')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ trans('projects.project_search') }}</h3>
+            <h3 class="panel-title">專案搜尋</h3>
         </div>
         <div class="panel-body">
             <form method="post" action="/projects/search">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">{{ trans('projects.search_target') }}</label>
+                    <label for="exampleInputEmail1">搜尋</label>
                     <input type="text" name="target" value="{{ $target or '' }}" class="form-control" id="exampleInputEmail1">
                 </div>
-                <button type="submit" class="btn btn-primary">{{ trans('projects.submit_search') }}</button>
+                <button type="submit" class="btn btn-primary">搜尋</button>
             </form>
         </div>
     </div>
@@ -27,16 +27,16 @@
     @if (isset($projects))
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ trans('projects.search_result') }}</h3>
+            <h3 class="panel-title">搜尋結果</h3>
         </div>
         <div class="panel-body">
             @if (!empty($projects))
             <table class="table table-striped">
                 <tr>
                     <th>#</th>
-                    <th>{{ trans('projects.project_name') }}</th>
-                    <th>{{ trans('projects.ending_date') }}</th>
-                    <th>{{ trans('projects.boss_name') }}</th>
+                    <th>專案名稱</th>
+                    <th>完成日期</th>
+                    <th>業主名稱</th>
                     <th><!-- Actions --></th>
                 </tr>
                 @foreach ($projects as $idx => $project)
@@ -49,8 +49,8 @@
                             <form class="form-inline" action="/projects/{{ $idx }}" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <a class="btn btn-primary" href="/projects/{{ $idx }}" role="button">{{ trans('projects.enter_project') }}</a>
-                                <button type="submit" class="btn btn-danger">{{ trans('projects.delete_project') }}</button>
+                                <a class="btn btn-primary" href="/projects/{{ $idx }}" role="button">進入</a>
+                                <button type="submit" class="btn btn-danger">刪除</button>
                             </form>
                         </td>
                     </tr>
@@ -58,7 +58,7 @@
             </table>
             @else
                 <p class="text-center text-muted">
-                    {{ trans('projects.search_result_empty') }}
+                    無符合的搜尋結果
                 </p>
             @endif
         </div>

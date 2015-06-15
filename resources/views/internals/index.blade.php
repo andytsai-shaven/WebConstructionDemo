@@ -2,7 +2,7 @@
 
 @section('internalsBreadcrumbs')
     <ol class="breadcrumb">
-        <li class="active">{{ trans('breadcrumbs.internals') }}</li>
+        <li class="active">內部作業</li>
     </ol>
 @stop
 

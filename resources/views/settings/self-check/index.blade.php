@@ -30,7 +30,6 @@
                                 <form class="form-inline" action="/settings/self-check/{{ $idx }}" method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    {{-- <a class="btn btn-primary" href="/settings/works/{{ $idx }}" role="button">{{ trans('projects.enter_project') }}</a> --}}
                                     <button type="submit" class="btn btn-danger">刪除</button>
                                 </form>
                             </td>
