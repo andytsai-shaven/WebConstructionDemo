@@ -50,6 +50,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/settings/works', 'SettingsWorksController');
     Route::resource('/settings/self-check', 'SettingsSelfCheckController');
     Route::resource('/self-check', 'SelfCheckController');
+
+    // 設定/協力廠商
+    Route::resource('/settings/subcontractors', 'SettingsSubcontractorsController');
 });
 
 // 會員管理
